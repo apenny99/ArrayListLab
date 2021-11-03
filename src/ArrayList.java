@@ -3,7 +3,7 @@ public class ArrayList<T> {
     private int length;
 
     public ArrayList(){
-        root=new Node();
+        root = new Node();
         length = 1;
     }
     public boolean add(T data){
@@ -17,6 +17,11 @@ public class ArrayList<T> {
         }
         return true;
     }
+
+    public void remove(int index){
+
+    }
+
     private Node<T> recur(Node<T> n2){//returns the last node in the chain
         if(n2.getNext()==null){//checks if the current node is the last in the chain and if it does it returns the node
     return n2;
@@ -25,6 +30,15 @@ public class ArrayList<T> {
         return null;
 
     }
+
+    private Node<T> index(int end, int start, Node<T> root){
+        if (end == start){
+            return root;
+        }
+        index(end, start++, root.getNext());
+        return null;
+    }
+
     private Node<T> recurPrev(Node<T> n2){//returns the second to last node using similar process to the previous one. 
         if(n2.getNext()==null){
             return n2.getPrev();
@@ -32,6 +46,14 @@ public class ArrayList<T> {
         recur(n2.getNext());
         return null;
 
+    }
+
+    public static void main(String[] args) {
+        ArrayList a = new ArrayList();
+        a.add(0);
+        a.add(1);
+        a.add(2);
+        a.index(2, 0, a).get_data();
     }
 
 }
