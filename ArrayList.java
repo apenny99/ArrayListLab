@@ -12,9 +12,6 @@ public class ArrayList<T> {
         newValue = data;
         return prev;
     }
-    public int size(){
-        return this.length;
-    }
 }
 
 
