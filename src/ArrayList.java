@@ -2,58 +2,51 @@ public class ArrayList<T> {
     private Node root;
     private int length;
 
+    public static void main(String[] args) {
+        ArrayList a = new ArrayList();
+        a.add(1);
+        a.add(2);
+        a.add(3);
+        Node test = a.index(2, 0, a.getRoot());
+        System.out.println(test.toString());
+        a.remove(2);
+        test = a.index(2, 0, a.getRoot());
+        System.out.println(test.toString());
+    }
+
     public ArrayList(){
-        root = new Node();
+        root = new Node(0);
         length = 1;
     }
-    public boolean add(T data){
-        if (length==1){//if it is the second value to be added, then it adds it in special way
-            Node n = new Node(data, root, null);
-            root.set_next(n);
 
-            } else {
-            Node n = new Node(data,recur(root), null);//sets the previous node to the last node on the end of the line
-            recurPrev(root).set_next(recur(root));//sets the old last node to have a next node value of the new node n
-        }
+    public Node<T> getRoot(){
+        return root;
+    }
+
+    public boolean add(T data){
+        Node n = new Node(data,recur(root), null);//sets the previous node to the last node on the end of the line
+        recur(root).set_next(n);
         return true;
     }
 
-    public void remove(int index){
-
+    public void remove(int n){
+        index(n, 0, root).getNext().set_prev(index(n, 0, root).getPrev());
+        index(n, 0, root).getPrev().set_next(index(n, 0, root).getNext());
+        //index(n, 0, root) = null;
     }
 
     private Node<T> recur(Node<T> n2){//returns the last node in the chain
         if(n2.getNext()==null){//checks if the current node is the last in the chain and if it does it returns the node
-    return n2;
+            return n2;
         }
-        recur(n2.getNext());//runs the method again on the child node of the previous node
-        return null;
-
+        return recur(n2.getNext());//runs the method again on the child node of the previous node
     }
 
     private Node<T> index(int end, int start, Node<T> root){
         if (end == start){
             return root;
         }
-        index(end, start++, root.getNext());
-        return null;
-    }
-
-    private Node<T> recurPrev(Node<T> n2){//returns the second to last node using similar process to the previous one. 
-        if(n2.getNext()==null){
-            return n2.getPrev();
-        }
-        recur(n2.getNext());
-        return null;
-
-    }
-
-    public static void main(String[] args) {
-        ArrayList a = new ArrayList();
-        a.add(0);
-        a.add(1);
-        a.add(2);
-        a.index(2, 0, a).get_data();
+        return index(end, start+=1, root.getNext());
     }
 
 }
