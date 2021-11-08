@@ -6,7 +6,7 @@ public class ArrayList<T> {
         root=new Node();
         length = 1;
     }
-    public boolean add(T data){
+   public boolean add(T data){
         if (length==1){//if it is the second value to be added, then it adds it in special way
             Node n = new Node(data, root, null);
             root.set_next(n);
