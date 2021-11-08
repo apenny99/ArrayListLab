@@ -7,12 +7,6 @@ public class ArrayList<T> {
         root=new Node();
         length = 1;
     }
-    public boolean add(T data){
-        Node n = new Node(data,recur(root), null);//sets the previous node to the last node on the end of the line
-        recur(root).set_next(n);
-        length++;
-        return true;
-    }
 
 
     public void add(int i, T data){//adds a node at the integer i with data value T
@@ -37,19 +31,12 @@ public class ArrayList<T> {
         return index(end, start+=1, root.getNext());
     }
 
-
-
-
-
-    public static void main(String[] args) {
-        ArrayList a = new ArrayList();
-
-        for(int i=0;i<15;i++){
-            a.add(i);
-        }
-
+    public T set(int i, T data){
+        T prev = new T.get(i);
+        T newValue = new T.get(i);
+        newValue = data;
+        return prev;
 
     }
-
 }
 

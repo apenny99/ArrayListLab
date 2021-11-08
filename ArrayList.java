@@ -1,5 +1,9 @@
-public class ArrayList {
+public class ArrayList<T> {
+    private Node root;
+    private int length;
 
-    public ArrayList(){
+    public int size(){
+        return this.length;
     }
 }
+
