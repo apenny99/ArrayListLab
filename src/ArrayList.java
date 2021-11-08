@@ -2,22 +2,13 @@ public class ArrayList<T> {
     private Node root;
     private int length;
 
-    public static void main(String[] args) {
-        ArrayList a = new ArrayList();
-        a.add(1);
-        a.add(2);
-        a.add(3);
-        Node test = a.index(2, 0, a.getRoot());
-        System.out.println(test.toString());
-        a.remove(2);
-        test = a.index(2, 0, a.getRoot());
-        System.out.println(test.toString());
-    }
+
 
     public ArrayList(){
         root = new Node(0);
         length = 1;
     }
+
 
     public Node<T> getRoot(){
         return root;
@@ -27,6 +18,16 @@ public class ArrayList<T> {
         Node n = new Node(data,recur(root), null);//sets the previous node to the last node on the end of the line
         recur(root).set_next(n);
         return true;
+
+
+    public void add(int i, T data){//adds a node at the integer i with data value T
+        Node n2=new Node(data);
+
+        n2.set_next(index(i+1,0,root));
+        index(i,0,root).set_next(n2);
+        length++;
+
+
     }
 
     public void remove(int n){
@@ -48,5 +49,13 @@ public class ArrayList<T> {
         }
         return index(end, start+=1, root.getNext());
     }
+      
+    public T set(int i, T data){
+        T prev = new T.get(i);
+        T newValue = new T.get(i);
+        newValue = data;
+        return prev;
 
+    }
 }
+
