@@ -1,5 +1,5 @@
 public class ArrayList<T> {
-    private Node root;
+    private Node<T> root;
     private int length;
 
     public static void main(String[] args) {
@@ -9,6 +9,8 @@ public class ArrayList<T> {
         a.add(3);
         Node test = a.index(2, 0, a.getRoot());
         System.out.println(test.toString());
+        System.out.println(a.get(0));
+        System.out.println(a.get(-1));
         a.remove(2);
         test = a.index(2, 0, a.getRoot());
         System.out.println(test.toString());
@@ -26,13 +28,22 @@ public class ArrayList<T> {
     public boolean add(T data){
         Node n = new Node(data,recur(root), null);//sets the previous node to the last node on the end of the line
         recur(root).set_next(n);
+        length++;
         return true;
     }
 
     public void remove(int n){
         index(n, 0, root).getNext().set_prev(index(n, 0, root).getPrev());
         index(n, 0, root).getPrev().set_next(index(n, 0, root).getNext());
+        length--;
         //index(n, 0, root) = null;
+    }
+
+    public T get(int n){
+        if (n < 0){
+            n+=length;
+        }
+        return index(n, 0, root).get_data();
     }
 
     private Node<T> recur(Node<T> n2){//returns the last node in the chain
