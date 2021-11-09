@@ -1,7 +1,7 @@
 /**
 * ArrayList Lab
 * This is the code for the all of the merged methods that are essential for an arraylist 
-* Author: William Writer
+* Authors: William Writer, August Penny, Zion Choi
 * Collaborator(s): The names of anyone you collaborated with here
 * Collaboration: We talked over everything we did whether that was making the methods, pushing code, or merging the branches.
 * Date: 11/8/21
