@@ -1,3 +1,12 @@
+/**
+* ArrayList Lab
+* This is the code for the all of the merged methods that are essential for an arraylist 
+* Author: William Writer
+* Collaborator(s): The names of anyone you collaborated with here
+* Collaboration: We talked over everything we did whether that was making the methods, pushing code, or merging the branches.
+* Date: 11/8/21
+* On My Honor, I confirm that I followed all collaboration policy guidelines, and that the work I am submitting is my own: WW, AP, ZC
+**/
 public class ArrayList<T> {
     private Node root;
     private int length;
