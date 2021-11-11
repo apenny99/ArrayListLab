@@ -64,7 +64,9 @@ public class ArrayList<T> {
         T newValue = new T.get(i);
         newValue = data;
         return prev;
-
+    }
+    public int size(){
+        return this.length;
     }
 }
 
