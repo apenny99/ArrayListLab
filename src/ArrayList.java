@@ -68,5 +68,12 @@ public class ArrayList<T> {
     public int size(){
         return this.length;
     }
+        
+        public T get(int n){
+        if (n < 0){
+            n+=length;
+        }
+        return index(n, 0, root).get_data();
+    }
 }
 
